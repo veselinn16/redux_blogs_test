@@ -15,8 +15,11 @@ export function getPosts() {
     }
 }
 
-export function createPost(values) {
-    const request = axios.post(`${rootUrl}/posts${API_KEY}`, values);
+export function createPost(values, callback) {
+    const request = axios.post(`${rootUrl}/posts${API_KEY}`, values)
+    .then(() => {
+        setTimeout(callback(), 100); 
+    });
 
     return {
         type: CREATE_POSTS,
