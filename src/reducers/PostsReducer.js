@@ -1,8 +1,10 @@
 import _ from 'lodash';
-import { GET_POSTS, GET_POST } from '../actions';
+import { GET_POSTS, GET_POST, DELETE_POST } from '../actions';
 
 export default function(state = {}, action) {
     switch (action.type) {
+        case DELETE_POST:
+            return _.omit(state, action.payload); // remove the post from the state
         case GET_POST:
             // const post = action.payload.data;
             // const newState = {...state }; // get all existing posts
